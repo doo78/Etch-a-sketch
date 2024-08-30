@@ -49,7 +49,21 @@ function initalizeBox(){
     let boxes = document.querySelectorAll(".box");
     boxes.forEach((box) => {
         box.addEventListener("mouseover", () => {
-        box.style.backgroundColor = "blue";
+        let value1 = Math.random()*255;
+        let value2 = Math.random()*255;
+        let value3 = Math.random()*255;
+        
+        let randomColour = ("rgb(" + value1 + "," + value2 + "," + value3 + ")")
+        box.style.backgroundColor = randomColour;
+
+        let currentOpacity = parseFloat(box.style.opacity);
+        if (isNaN(currentOpacity)) {
+            currentOpacity = 0; 
+        }
+
+        console.log("1" + currentOpacity);
+        box.style.opacity = currentOpacity + 0.1;
+        console.log("2" + box.style.opacity);
         });
     });
 }
